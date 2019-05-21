@@ -57,8 +57,8 @@ const template = [
         role: 'help',
         submenu: [
             {
-                label: 'Riot Help',
-                click() { shell.openExternal('https://about.riot.im/help'); },
+                label: 'RPG Chat Help',
+                click() { shell.openExternal('https://to.fabric.pub#help:fabric.pub'); },
             },
         ],
     },
@@ -136,4 +136,3 @@ if (process.platform === 'darwin') {
 }
 
 module.exports = Menu.buildFromTemplate(template);
-

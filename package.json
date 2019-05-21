@@ -1,13 +1,13 @@
 {
-  "name": "riot-web",
-  "productName": "Riot",
+  "name": "@fabric/grove",
+  "productName": "RPG Chat",
   "main": "electron_app/src/electron-main.js",
-  "version": "1.1.2",
-  "description": "A feature-rich client for Matrix.org",
-  "author": "New Vector Ltd.",
+  "version": "0.2.0-dev",
+  "description": "Desktop client for RPG Chat.",
+  "author": "Fabric Labs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vector-im/riot-web"
+    "url": "https://github.com/RolePlayGateway/chat.roleplaygateway.com"
   },
   "license": "Apache-2.0",
   "files": [
@@ -35,10 +35,10 @@
     "build:compile": "yarn reskindex && babel --source-maps -d lib src",
     "build:bundle": "cross-env NODE_ENV=production webpack -p --progress --bail --mode production",
     "build:bundle:dev": "webpack --progress --bail --mode development",
-    "build:electron": "yarn clean && yarn build && yarn install:electron && build -wml --ia32 --x64",
-    "build:electron:linux": "yarn build && build -l --x64",
-    "build:electron:macos": "yarn build && build -m --x64",
-    "build:electron:windows": "yarn build && build -w --ia32 --x64",
+    "build:client": "yarn clean && yarn build && yarn install:electron && build -wml --ia32 --x64",
+    "build:linux": "yarn build && build -l --x64",
+    "build:mac": "yarn build && build -m --x64",
+    "build:windows": "yarn build && build -w --ia32 --x64",
     "build:react-sdk": "node scripts/yarn-sub.js matrix-react-sdk build",
     "build:js-sdk": "node scripts/yarn-sub.js matrix-js-sdk start:init",
     "build": "yarn build:js-sdk && yarn build:react-sdk && yarn reskindex && yarn build:res && yarn build:bundle",
@@ -63,6 +63,7 @@
     "test-multi": "karma start"
   },
   "dependencies": {
+    "@fabric/core": "FabricLabs/fabric#pruning",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "bluebird": "^3.5.2",
@@ -73,8 +74,8 @@
     "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
     "gfm.css": "^1.1.2",
     "highlight.js": "^9.13.1",
-    "matrix-js-sdk": "1.1.0",
-    "matrix-react-sdk": "1.1.2",
+    "matrix-js-sdk": "FabricLabs/matrix-js-sdk#grove-0.1.0",
+    "matrix-react-sdk": "FabricLabs/matrix-react-sdk#grove-0.1.0",
     "modernizr": "^3.6.0",
     "olm": "https://packages.matrix.org/npm/olm/olm-3.1.0.tgz",
     "prop-types": "^15.6.2",
@@ -166,9 +167,18 @@
       "origin_migrator/**/*"
     ],
     "linux": {
-      "target": "deb",
+      "target": [
+        {
+          "target": "deb",
+          "arch": "x64"
+        },
+        {
+          "target": "rpm",
+          "arch": "x64"
+        }
+      ],
       "category": "Network;InstantMessaging;Chat",
-      "maintainer": "support@riot.im",
+      "maintainer": "labs@fabric.pub",
       "desktop": {
         "StartupWMClass": "riot"
       }

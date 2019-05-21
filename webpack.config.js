@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let og_image_url = process.env.RIOT_OG_IMAGE_URL;
-if (!og_image_url) og_image_url = 'https://riot.im/app/themes/riot/img/logos/riot-im-logo-black-text.png';
+if (!og_image_url) og_image_url = 'https://chat.fabric.pub/images/grove-thumbnail.png';
 
 module.exports = {
     entry: {
@@ -14,10 +14,12 @@ module.exports = {
         "indexeddb-worker": "./src/vector/indexeddb-worker.js",
 
         "mobileguide": "./src/vector/mobile_guide/index.js",
+        "releases": "./src/releases/index.js",
 
         // CSS themes
         "theme-light": "./node_modules/matrix-react-sdk/res/themes/light/css/light.scss",
         "theme-dark": "./node_modules/matrix-react-sdk/res/themes/dark/css/dark.scss",
+        "theme-rpg": "./node_modules/matrix-react-sdk/res/themes/rpg/css/rpg.scss",
     },
     module: {
         rules: [
@@ -174,7 +176,7 @@ module.exports = {
             // bottom of <head> or the bottom of <body>, and I'm a bit scared
             // about moving them.
             inject: false,
-            excludeChunks: ['mobileguide'],
+            excludeChunks: ['mobileguide', 'releases'],
             vars: {
                 og_image_url: og_image_url,
             },
@@ -183,6 +185,11 @@ module.exports = {
             template: './src/vector/mobile_guide/index.html',
             filename: 'mobile_guide/index.html',
             chunks: ['mobileguide'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/releases/index.html',
+            filename: 'releases/index.html',
+            chunks: ['releases'],
         }),
     ],
     devtool: 'source-map',

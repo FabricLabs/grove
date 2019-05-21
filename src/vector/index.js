@@ -25,13 +25,17 @@ require('highlight.js/styles/github.css');
 require('draft-js/dist/Draft.css');
 
 import olmWasmPath from 'olm/olm.wasm';
-
 import './rageshakesetup';
-
 import React from 'react';
+
+const Fabric = require('@fabric/core');
+
 // add React and ReactPerf to the global namespace, to make them easier to
 // access via the console
 global.React = React;
+global.Fabric = Fabric;
+
+
 if (process.env.NODE_ENV !== 'production') {
     global.Perf = require('react-addons-perf');
 }

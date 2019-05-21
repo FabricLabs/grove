@@ -33,19 +33,21 @@ do
     # so we have to 'resize the svg' first (add width and height attributes to the svg element) to make it render at the
     # size we need.
     # XXX: This will break if the svg already has width and height attributes
-    cp "$1" "$tmpdir/tmp.svg"
-    xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n width -v $i "$tmpdir/tmp.svg" > "$tmpdir/tmp2.svg"
-    xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n height -v $i "$tmpdir/tmp2.svg" > "$tmpdir/tmp3.svg"
-    cairosvg -f png -o "$tmpdir/$i.png"  "$tmpdir/tmp3.svg"
-    rm "$tmpdir/tmp.svg" "$tmpdir/tmp2.svg" "$tmpdir/tmp3.svg"
+    cp "$1" "$tmpdir/tmp.png"
+    #xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n width -v $i "$tmpdir/tmp.svg" > "$tmpdir/tmp2.svg"
+    #xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n height -v $i "$tmpdir/tmp2.svg" > "$tmpdir/tmp3.svg"
+    #cairosvg -f png -o "$tmpdir/$i.png"  "$tmpdir/tmp3.svg"
+    convert "$tmpdir/tmp.png" -resize ${i}x${i} "$tmpdir/$i.png"
+    rm "$tmpdir/tmp.png"
 done
 
 # one more for the non-square mstile
-cp "$1" "$tmpdir/tmp.svg"
-xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n width -v 310 "$tmpdir/tmp.svg" > "$tmpdir/tmp2.svg"
-xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n height -v 150 "$tmpdir/tmp2.svg" > "$tmpdir/tmp3.svg"
-cairosvg -f png -o "$tmpdir/310x150.png"  "$tmpdir/tmp3.svg"
-rm "$tmpdir/tmp.svg" "$tmpdir/tmp2.svg" "$tmpdir/tmp3.svg"
+cp "$1" "$tmpdir/tmp.png"
+#xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n width -v 310 "$tmpdir/tmp.svg" > "$tmpdir/tmp2.svg"
+#xmlstarlet ed -N x="http://www.w3.org/2000/svg" --insert "/x:svg" --type attr -n height -v 150 "$tmpdir/tmp2.svg" > "$tmpdir/tmp3.svg"
+#cairosvg -f png -o "$tmpdir/310x150.png"  "$tmpdir/tmp3.svg"
+convert "$tmpdir/tmp.png" -resize 310x150 "$tmpdir/310x150.png"
+rm "$tmpdir/tmp.png"
 
 mkdir "$tmpdir/RPG.iconset"
 cp "$tmpdir/16.png" "$tmpdir/RPG.iconset/icon_16x16.png"
