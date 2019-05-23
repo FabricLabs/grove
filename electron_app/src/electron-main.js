@@ -299,8 +299,8 @@ app.on('ready', () => {
 
     // Load the previous window state with fallback to defaults
     const mainWindowState = windowStateKeeper({
-        defaultWidth: 1024,
-        defaultHeight: 768,
+        defaultWidth: 800,
+        defaultHeight: 600,
     });
 
     const preloadScript = path.normalize(`${__dirname}/preload.js`);

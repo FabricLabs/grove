@@ -52,6 +52,7 @@ const INCLUDE_LANGS = [
 // "dest/b/...".
 const COPY_LIST = [
     ["res/manifest.json", "webapp"],
+    ["res/home.html", "webapp"],
     ["res/welcome.html", "webapp"],
     ["res/welcome/**", "webapp/welcome"],
     ["res/themes/**", "webapp/themes"],

@@ -189,7 +189,7 @@
     },
     "win": {
       "target": {
-        "target": "squirrel"
+        "target": "nsis"
       }
     },
     "directories": {

@@ -37,6 +37,6 @@ That's all there is to it.  See `npm run docs` for more options.  gl;hf!
 
 [fabric]: https://fabric.pub
 [rpg]: https://www.roleplaygateway.com
-[test-status-badge]: https://img.shields.io/travis/RolePlayGateway/chat.verse.im.svg?branch=master&style=flat-square
-[test-status-home]: https://travis-ci.org/RolePlayGateway/chat.verse.im
-[verse]: https://verse.im
+[test-status-badge]: https://img.shields.io/travis/FabricLabs/grove.svg?branch=master&style=flat-square
+[test-status-home]: https://travis-ci.org/FabricLabs/grove
+[verse]: https://verse.fabric.pub

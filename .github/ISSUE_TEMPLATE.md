@@ -38,7 +38,7 @@ For the web app:
 
 - **Browser**: Chrome, Safari, Firefox? which version?
 - **OS**: Windows, macOS, Ubuntu, Arch Linux, etc?
-- **URL**: riot.im/develop / riot.im/app / somewhere else? If a private server, what version of riot-web?
+- **URL**: desktop app / chat.roleplaygateway.com / somewhere else? If a private server, what version of `rpg-chat`?
 
 For the desktop app:
 
