@@ -72,7 +72,7 @@ function onHashChange(ev: HashChangeEvent) {
 // This will be called whenever the SDK changes screens,
 // so a web page can update the URL bar appropriately.
 function onNewScreen(screen: string) {
-    console.log("newscreen " + screen);
+    // console.log("newscreen " + screen);
     const hash = '#/' + screen;
     lastLocationHashSet = hash;
     window.location.hash = hash;
@@ -145,7 +145,7 @@ export async function loadApp(fragParams: {}) {
     const params = parseQs(window.location);
 
     const urlWithoutQuery = window.location.protocol + '//' + window.location.host + window.location.pathname;
-    console.log("Vector starting at " + urlWithoutQuery);
+    // console.log("Vector starting at " + urlWithoutQuery);
 
     (platform as VectorBasePlatform).startUpdater();
 
@@ -169,7 +169,7 @@ export async function loadApp(fragParams: {}) {
 async function verifyServerConfig() {
     let validatedConfig;
     try {
-        console.log("Verifying homeserver configuration");
+        // console.log("Verifying homeserver configuration");
 
         // Note: the query string may include is_url and hs_url - we only respect these in the
         // context of email validation. Because we don't respect them otherwise, we do not need
@@ -220,7 +220,7 @@ async function verifyServerConfig() {
 
         let discoveryResult = null;
         if (wkConfig) {
-            console.log("Config uses a default_server_config - validating object");
+            // console.log("Config uses a default_server_config - validating object");
             discoveryResult = await AutoDiscovery.fromDiscoveryConfig(wkConfig);
         }
 
@@ -251,10 +251,10 @@ async function verifyServerConfig() {
     validatedConfig.isDefault = true;
 
     // Just in case we ever have to debug this
-    console.log("Using homeserver config:", validatedConfig);
+    // console.log("Using homeserver config:", validatedConfig);
 
     // Add the newly built config to the actual config for use by the app
-    console.log("Updating SdkConfig with validated discovery information");
+    // console.log("Updating SdkConfig with validated discovery information");
     SdkConfig.add({"validated_server_config": validatedConfig});
 
     return SdkConfig.get();

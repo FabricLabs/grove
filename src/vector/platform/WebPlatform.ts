@@ -150,7 +150,7 @@ export default class WebPlatform extends VectorBasePlatform {
 
             return { status: UpdateCheckStatus.NotAvailable };
         }, (err) => {
-            console.error("Failed to poll for update", err);
+            // console.error("Failed to poll for update", err);
             return {
                 status: UpdateCheckStatus.Error,
                 detail: err.message || err.status ? err.status.toString() : 'Unknown Error',

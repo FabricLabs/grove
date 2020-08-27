@@ -35,17 +35,17 @@ import {setTheme} from "matrix-react-sdk/src/theme";
 import { initRageshake } from "./rageshakesetup";
 
 
-export const rageshakePromise = initRageshake();
+// export const rageshakePromise = initRageshake();
 
 export function preparePlatform() {
     if (window.ipcRenderer) {
-        console.log("Using Electron platform");
+        // console.log("Using IPC platform");
         PlatformPeg.set(new ElectronPlatform());
     } else if (window.matchMedia('(display-mode: standalone)').matches) {
-        console.log("Using PWA platform");
+        // console.log("Using PWA platform");
         PlatformPeg.set(new PWAPlatform());
     } else {
-        console.log("Using Web platform");
+        // console.log("Using Web platform");
         PlatformPeg.set(new WebPlatform());
     }
 }
@@ -74,9 +74,9 @@ export function loadOlm(): Promise<void> {
     return Olm.init({
         locateFile: () => olmWasmPath,
     }).then(() => {
-        console.log("Using WebAssembly Olm");
+        // console.log("Using WebAssembly Olm");
     }).catch((e) => {
-        console.log("Failed to load Olm: trying legacy version", e);
+        // console.log("Failed to load Olm: trying legacy version", e);
         return new Promise((resolve, reject) => {
             const s = document.createElement('script');
             s.src = 'olm_legacy.js'; // XXX: This should be cache-busted too
@@ -88,9 +88,9 @@ export function loadOlm(): Promise<void> {
             // not 'Olm' which is still the failed wasm version.
             return window.Olm.init();
         }).then(() => {
-            console.log("Using legacy Olm");
+            // console.log("Using legacy Olm");
         }).catch((e) => {
-            console.log("Both WebAssembly and asm.js Olm failed!", e);
+            // console.log("Both WebAssembly and asm.js Olm failed!", e);
         });
     });
 }
@@ -117,7 +117,7 @@ export async function loadLanguage() {
 export async function loadSkin() {
     // Ensure the skin is the very first thing to load for the react-sdk. We don't even want to reference
     // the SDK until we have to in imports.
-    console.log("Loading skin...");
+    // console.log("Loading skin...");
     // load these async so that its code is not executed immediately and we can catch any exceptions
     const [sdk, skin] = await Promise.all([
         import(
@@ -131,7 +131,7 @@ export async function loadSkin() {
             "../component-index"),
     ]);
     sdk.loadSkin(skin);
-    console.log("Skin loaded!");
+    // console.log("Skin loaded!");
 }
 
 export async function loadTheme() {

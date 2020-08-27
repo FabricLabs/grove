@@ -1,8 +1,8 @@
 {
-    "name": "Element",
-    "short_name": "Element",
+    "name": "Grove",
+    "short_name": "Grove",
     "display": "standalone",
-    "theme_color": "#76CFA6",
+    "theme_color": "#5f8d70",
     "start_url": "index.html",
     "icons": [
         {
@@ -71,15 +71,11 @@
             "type": "image/png"
         }
     ],
-    "related_applications": [
+    "@related_applications": [
         {
             "platform": "play",
-            "url": "https://play.google.com/store/apps/details?id=im.vector.app",
-            "id": "im.vector.app"
-        },
-        {
-            "platform": "itunes",
-            "url": "https://apps.apple.com/app/vector/id1083446067"
+            "url": "https://play.google.com/store/apps/details?id=com.roleplaygateway.chat",
+            "id": "com.roleplaygateway.chat"
         }
     ]
 }

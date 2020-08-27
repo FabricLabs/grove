@@ -4,9 +4,9 @@
  * voodoo where we have to set display: none by default
  */
 
-h1::after {
+/* h1::after {
     content: "!";
-}
+} */
 
 .mx_Parent {
     display: -webkit-box;
@@ -32,8 +32,8 @@ h1::after {
 }
 
 .mx_Logo {
-    height: 54px;
-    margin-top: 2px;
+    height: 100px;
+    margin-top: 1em;
 }
 
 .mx_ButtonGroup {
@@ -169,8 +169,8 @@ we don't have an account and should hide them. No account == no guest account ei
 </style>
 
 <div class="mx_Parent">
-    <a href="https://riot.im" target="_blank" rel="noopener">
-        <img src="welcome/images/logo.svg" alt="" class="mx_Logo"/>
+    <a href="https://fabric.pub" target="_blank" rel="noopener">
+        <img src="themes/grove/img/logos/grove-thumbnail.png" alt="" class="mx_Logo thick-border"/>
     </a>
     <h1 class="mx_Header_title">_t("Welcome to Element")</h1>
     <h4 class="mx_Header_subtitle">_t("Decentralised, encrypted chat &amp; collaboration powered by [matrix]")</h4>
